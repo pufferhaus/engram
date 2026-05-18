@@ -7,11 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C87972700C45DD8BA174614 /* SigilRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169F09EFD7B4103FE4B3C5E2 /* SigilRenderer.swift */; };
 		2B9BBD8037E3A567010DFB65 /* EngramApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61B2D20D94E1EFC39CC95B6 /* EngramApp.swift */; };
 		51119D5E2247097C4F6DFF35 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD244D129DDE794E66DCF679 /* AVFoundation.framework */; };
+		5B363E475DED7B1B500B8868 /* FeatureFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5AFF87D8CE8016C1ABB0CA /* FeatureFrame.swift */; };
 		72A51A647D31FFC92BF034A6 /* EngramTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FEC11A965B1D686B28BBA47 /* EngramTests.swift */; };
 		9174CC24F459ACCD72AB280A /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8EB97A4FFE61FEE89B4E4CB /* Accelerate.framework */; };
 		A78A8709940552C9FC819A84 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E4A23A0FE606A0CF28ABE1 /* ContentView.swift */; };
+		D130EEEDA9834A38F1DF3252 /* FeatureFrameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731F301E49660B8B0E8D2B1E /* FeatureFrameTests.swift */; };
+		D6356343556A1F972221C99D /* SigilRendererTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E94A8869CFF9C5E41A5596 /* SigilRendererTests.swift */; };
+		E2C457480999921C1347728F /* GlyphContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10838318631A0CDD0629A21 /* GlyphContext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,13 +30,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		012960EE7B59B75FDFC0F051 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		03E4A23A0FE606A0CF28ABE1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		169F09EFD7B4103FE4B3C5E2 /* SigilRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigilRenderer.swift; sourceTree = "<group>"; };
+		45E94A8869CFF9C5E41A5596 /* SigilRendererTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigilRendererTests.swift; sourceTree = "<group>"; };
+		4D5AFF87D8CE8016C1ABB0CA /* FeatureFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureFrame.swift; sourceTree = "<group>"; };
 		6FEC11A965B1D686B28BBA47 /* EngramTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngramTests.swift; sourceTree = "<group>"; };
+		731F301E49660B8B0E8D2B1E /* FeatureFrameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureFrameTests.swift; sourceTree = "<group>"; };
 		7747AB6507C03EE64F5C74D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9A0551A8DFF54710CD9C3423 /* Engram.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Engram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD244D129DDE794E66DCF679 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		B892F91E14654D7810978161 /* EngramTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = EngramTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C61B2D20D94E1EFC39CC95B6 /* EngramApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngramApp.swift; sourceTree = "<group>"; };
+		D10838318631A0CDD0629A21 /* GlyphContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlyphContext.swift; sourceTree = "<group>"; };
 		D8EB97A4FFE61FEE89B4E4CB /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -48,6 +59,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0679DB002D04247FAF8EB436 /* AudioTests */ = {
+			isa = PBXGroup;
+			children = (
+				731F301E49660B8B0E8D2B1E /* FeatureFrameTests.swift */,
+			);
+			path = AudioTests;
+			sourceTree = "<group>";
+		};
 		1041E274640622EC6FE65C0F /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -56,12 +75,29 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
+		531EE6C8BC8BE96D10DD7515 /* GlyphTests */ = {
+			isa = PBXGroup;
+			children = (
+				45E94A8869CFF9C5E41A5596 /* SigilRendererTests.swift */,
+			);
+			path = GlyphTests;
+			sourceTree = "<group>";
+		};
 		630F11723A980774A461BEDD /* App */ = {
 			isa = PBXGroup;
 			children = (
 				C61B2D20D94E1EFC39CC95B6 /* EngramApp.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		67F6977E3CE40E0BF724ECEA /* Glyph */ = {
+			isa = PBXGroup;
+			children = (
+				D10838318631A0CDD0629A21 /* GlyphContext.swift */,
+				169F09EFD7B4103FE4B3C5E2 /* SigilRenderer.swift */,
+			);
+			path = Glyph;
 			sourceTree = "<group>";
 		};
 		7D624AAAFFAA7829983E9B07 = {
@@ -78,8 +114,19 @@
 			isa = PBXGroup;
 			children = (
 				6FEC11A965B1D686B28BBA47 /* EngramTests.swift */,
+				012960EE7B59B75FDFC0F051 /* Info.plist */,
+				0679DB002D04247FAF8EB436 /* AudioTests */,
+				531EE6C8BC8BE96D10DD7515 /* GlyphTests */,
 			);
 			path = EngramTests;
+			sourceTree = "<group>";
+		};
+		AF80F09415B414FB048DEFE8 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				4D5AFF87D8CE8016C1ABB0CA /* FeatureFrame.swift */,
+			);
+			path = Audio;
 			sourceTree = "<group>";
 		};
 		B62C45094E60FCB220425CA7 /* Products */ = {
@@ -105,6 +152,8 @@
 			children = (
 				7747AB6507C03EE64F5C74D0 /* Info.plist */,
 				630F11723A980774A461BEDD /* App */,
+				AF80F09415B414FB048DEFE8 /* Audio */,
+				67F6977E3CE40E0BF724ECEA /* Glyph */,
 				1041E274640622EC6FE65C0F /* UI */,
 			);
 			path = Engram;
@@ -189,6 +238,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				72A51A647D31FFC92BF034A6 /* EngramTests.swift in Sources */,
+				D130EEEDA9834A38F1DF3252 /* FeatureFrameTests.swift in Sources */,
+				D6356343556A1F972221C99D /* SigilRendererTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,6 +249,9 @@
 			files = (
 				A78A8709940552C9FC819A84 /* ContentView.swift in Sources */,
 				2B9BBD8037E3A567010DFB65 /* EngramApp.swift in Sources */,
+				5B363E475DED7B1B500B8868 /* FeatureFrame.swift in Sources */,
+				E2C457480999921C1347728F /* GlyphContext.swift in Sources */,
+				1C87972700C45DD8BA174614 /* SigilRenderer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +329,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = EngramTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -291,6 +346,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = EngramTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
