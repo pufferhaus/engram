@@ -10,6 +10,7 @@
 		078EEEE48D42A3AEAFB42AB2 /* RendererPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64ACDAE47783C581CFC33724 /* RendererPreviewView.swift */; };
 		1C87972700C45DD8BA174614 /* SigilRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169F09EFD7B4103FE4B3C5E2 /* SigilRenderer.swift */; };
 		2B9BBD8037E3A567010DFB65 /* EngramApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61B2D20D94E1EFC39CC95B6 /* EngramApp.swift */; };
+		3D88973E1C91622FA73B9409 /* GlyphStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ED05CAC1E3036C715CC197 /* GlyphStateTests.swift */; };
 		51119D5E2247097C4F6DFF35 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD244D129DDE794E66DCF679 /* AVFoundation.framework */; };
 		5B363E475DED7B1B500B8868 /* FeatureFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5AFF87D8CE8016C1ABB0CA /* FeatureFrame.swift */; };
 		72A51A647D31FFC92BF034A6 /* EngramTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FEC11A965B1D686B28BBA47 /* EngramTests.swift */; };
@@ -18,6 +19,7 @@
 		D130EEEDA9834A38F1DF3252 /* FeatureFrameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731F301E49660B8B0E8D2B1E /* FeatureFrameTests.swift */; };
 		D6356343556A1F972221C99D /* SigilRendererTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E94A8869CFF9C5E41A5596 /* SigilRendererTests.swift */; };
 		E2C457480999921C1347728F /* GlyphContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10838318631A0CDD0629A21 /* GlyphContext.swift */; };
+		E7ADB0C31FC703AC941C3B94 /* GlyphState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BDAFD8C3D10D9B0C8031F3 /* GlyphState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +36,7 @@
 		012960EE7B59B75FDFC0F051 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		03E4A23A0FE606A0CF28ABE1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		169F09EFD7B4103FE4B3C5E2 /* SigilRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigilRenderer.swift; sourceTree = "<group>"; };
+		16ED05CAC1E3036C715CC197 /* GlyphStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlyphStateTests.swift; sourceTree = "<group>"; };
 		45E94A8869CFF9C5E41A5596 /* SigilRendererTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigilRendererTests.swift; sourceTree = "<group>"; };
 		4D5AFF87D8CE8016C1ABB0CA /* FeatureFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureFrame.swift; sourceTree = "<group>"; };
 		64ACDAE47783C581CFC33724 /* RendererPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RendererPreviewView.swift; sourceTree = "<group>"; };
@@ -44,6 +47,7 @@
 		AD244D129DDE794E66DCF679 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		B892F91E14654D7810978161 /* EngramTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = EngramTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C61B2D20D94E1EFC39CC95B6 /* EngramApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngramApp.swift; sourceTree = "<group>"; };
+		C6BDAFD8C3D10D9B0C8031F3 /* GlyphState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlyphState.swift; sourceTree = "<group>"; };
 		D10838318631A0CDD0629A21 /* GlyphContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlyphContext.swift; sourceTree = "<group>"; };
 		D8EB97A4FFE61FEE89B4E4CB /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -81,6 +85,7 @@
 		531EE6C8BC8BE96D10DD7515 /* GlyphTests */ = {
 			isa = PBXGroup;
 			children = (
+				16ED05CAC1E3036C715CC197 /* GlyphStateTests.swift */,
 				45E94A8869CFF9C5E41A5596 /* SigilRendererTests.swift */,
 			);
 			path = GlyphTests;
@@ -98,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				D10838318631A0CDD0629A21 /* GlyphContext.swift */,
+				C6BDAFD8C3D10D9B0C8031F3 /* GlyphState.swift */,
 				169F09EFD7B4103FE4B3C5E2 /* SigilRenderer.swift */,
 			);
 			path = Glyph;
@@ -242,6 +248,7 @@
 			files = (
 				72A51A647D31FFC92BF034A6 /* EngramTests.swift in Sources */,
 				D130EEEDA9834A38F1DF3252 /* FeatureFrameTests.swift in Sources */,
+				3D88973E1C91622FA73B9409 /* GlyphStateTests.swift in Sources */,
 				D6356343556A1F972221C99D /* SigilRendererTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -254,6 +261,7 @@
 				2B9BBD8037E3A567010DFB65 /* EngramApp.swift in Sources */,
 				5B363E475DED7B1B500B8868 /* FeatureFrame.swift in Sources */,
 				E2C457480999921C1347728F /* GlyphContext.swift in Sources */,
+				E7ADB0C31FC703AC941C3B94 /* GlyphState.swift in Sources */,
 				078EEEE48D42A3AEAFB42AB2 /* RendererPreviewView.swift in Sources */,
 				1C87972700C45DD8BA174614 /* SigilRenderer.swift in Sources */,
 			);
