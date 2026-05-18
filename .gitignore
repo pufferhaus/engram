@@ -1,5 +1,7 @@
-*.xcodeproj/
+*.xcodeproj/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
 .DS_Store
 build/
 DerivedData/
 .swiftpm/
+Engram/Info.plist

@@ -1,0 +1,443 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2B9BBD8037E3A567010DFB65 /* EngramApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61B2D20D94E1EFC39CC95B6 /* EngramApp.swift */; };
+		51119D5E2247097C4F6DFF35 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD244D129DDE794E66DCF679 /* AVFoundation.framework */; };
+		72A51A647D31FFC92BF034A6 /* EngramTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FEC11A965B1D686B28BBA47 /* EngramTests.swift */; };
+		9174CC24F459ACCD72AB280A /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8EB97A4FFE61FEE89B4E4CB /* Accelerate.framework */; };
+		A78A8709940552C9FC819A84 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E4A23A0FE606A0CF28ABE1 /* ContentView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		25A058A6160A41EA809878A5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E6974E702704633D9605491C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CBCDC5ABCED1290D34EC5E45;
+			remoteInfo = Engram;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		03E4A23A0FE606A0CF28ABE1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		6FEC11A965B1D686B28BBA47 /* EngramTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngramTests.swift; sourceTree = "<group>"; };
+		7747AB6507C03EE64F5C74D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		9A0551A8DFF54710CD9C3423 /* Engram.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Engram.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD244D129DDE794E66DCF679 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		B892F91E14654D7810978161 /* EngramTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = EngramTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C61B2D20D94E1EFC39CC95B6 /* EngramApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngramApp.swift; sourceTree = "<group>"; };
+		D8EB97A4FFE61FEE89B4E4CB /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BFCC4B2B043B653E78FBA363 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				51119D5E2247097C4F6DFF35 /* AVFoundation.framework in Frameworks */,
+				9174CC24F459ACCD72AB280A /* Accelerate.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1041E274640622EC6FE65C0F /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				03E4A23A0FE606A0CF28ABE1 /* ContentView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		630F11723A980774A461BEDD /* App */ = {
+			isa = PBXGroup;
+			children = (
+				C61B2D20D94E1EFC39CC95B6 /* EngramApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		7D624AAAFFAA7829983E9B07 = {
+			isa = PBXGroup;
+			children = (
+				EF6E1E2C9FF791734A189446 /* Engram */,
+				A8DE77EBAF4D0306A01EBB14 /* EngramTests */,
+				BA522BF71FDA61848C794BF5 /* Frameworks */,
+				B62C45094E60FCB220425CA7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A8DE77EBAF4D0306A01EBB14 /* EngramTests */ = {
+			isa = PBXGroup;
+			children = (
+				6FEC11A965B1D686B28BBA47 /* EngramTests.swift */,
+			);
+			path = EngramTests;
+			sourceTree = "<group>";
+		};
+		B62C45094E60FCB220425CA7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A0551A8DFF54710CD9C3423 /* Engram.app */,
+				B892F91E14654D7810978161 /* EngramTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BA522BF71FDA61848C794BF5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D8EB97A4FFE61FEE89B4E4CB /* Accelerate.framework */,
+				AD244D129DDE794E66DCF679 /* AVFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EF6E1E2C9FF791734A189446 /* Engram */ = {
+			isa = PBXGroup;
+			children = (
+				7747AB6507C03EE64F5C74D0 /* Info.plist */,
+				630F11723A980774A461BEDD /* App */,
+				1041E274640622EC6FE65C0F /* UI */,
+			);
+			path = Engram;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		30D8E174D1B1B7E0305A85E7 /* EngramTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4B79447BFB43DDF1B03FADDA /* Build configuration list for PBXNativeTarget "EngramTests" */;
+			buildPhases = (
+				B62CFD5D3EB54901FB33D7F1 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6F38D2E8EF67B6CD2756E351 /* PBXTargetDependency */,
+			);
+			name = EngramTests;
+			packageProductDependencies = (
+			);
+			productName = EngramTests;
+			productReference = B892F91E14654D7810978161 /* EngramTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		CBCDC5ABCED1290D34EC5E45 /* Engram */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3B81D69C6984D45FA3AC4D1E /* Build configuration list for PBXNativeTarget "Engram" */;
+			buildPhases = (
+				DB3485C9ED0FCF9E1A6BD0FC /* Sources */,
+				BFCC4B2B043B653E78FBA363 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Engram;
+			packageProductDependencies = (
+			);
+			productName = Engram;
+			productReference = 9A0551A8DFF54710CD9C3423 /* Engram.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E6974E702704633D9605491C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					CBCDC5ABCED1290D34EC5E45 = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = D7DA28092788B0F19E287981 /* Build configuration list for PBXProject "Engram" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 7D624AAAFFAA7829983E9B07;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = B62C45094E60FCB220425CA7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CBCDC5ABCED1290D34EC5E45 /* Engram */,
+				30D8E174D1B1B7E0305A85E7 /* EngramTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B62CFD5D3EB54901FB33D7F1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72A51A647D31FFC92BF034A6 /* EngramTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DB3485C9ED0FCF9E1A6BD0FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A78A8709940552C9FC819A84 /* ContentView.swift in Sources */,
+				2B9BBD8037E3A567010DFB65 /* EngramApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6F38D2E8EF67B6CD2756E351 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CBCDC5ABCED1290D34EC5E45 /* Engram */;
+			targetProxy = 25A058A6160A41EA809878A5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		05CE15E29213F8CFF3AC10EB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 0.1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		3720D85AC254984CD9FC0537 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = art.engram.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Engram.app/Engram";
+			};
+			name = Release;
+		};
+		48242C4C19CD3CDDAAC6F999 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = art.engram.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Engram.app/Engram";
+			};
+			name = Debug;
+		};
+		65F11CDF6686B2F58DD681A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Engram/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = art.engram.app;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		76F0BC0BCE79173D76CFA052 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 0.1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		CB5462203B82974D173A292A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Engram/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = art.engram.app;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3B81D69C6984D45FA3AC4D1E /* Build configuration list for PBXNativeTarget "Engram" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				65F11CDF6686B2F58DD681A0 /* Debug */,
+				CB5462203B82974D173A292A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		4B79447BFB43DDF1B03FADDA /* Build configuration list for PBXNativeTarget "EngramTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				48242C4C19CD3CDDAAC6F999 /* Debug */,
+				3720D85AC254984CD9FC0537 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		D7DA28092788B0F19E287981 /* Build configuration list for PBXProject "Engram" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				76F0BC0BCE79173D76CFA052 /* Debug */,
+				05CE15E29213F8CFF3AC10EB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E6974E702704633D9605491C /* Project object */;
+}
