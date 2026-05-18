@@ -14,8 +14,11 @@
 		51119D5E2247097C4F6DFF35 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD244D129DDE794E66DCF679 /* AVFoundation.framework */; };
 		5B363E475DED7B1B500B8868 /* FeatureFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5AFF87D8CE8016C1ABB0CA /* FeatureFrame.swift */; };
 		72A51A647D31FFC92BF034A6 /* EngramTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FEC11A965B1D686B28BBA47 /* EngramTests.swift */; };
+		7EA58AC1AE3323F26E11D4DE /* FeatureExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFB2F275273E82124782312 /* FeatureExtractor.swift */; };
 		9174CC24F459ACCD72AB280A /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8EB97A4FFE61FEE89B4E4CB /* Accelerate.framework */; };
+		9185302FC090290B185A1DB2 /* MicCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = B091087A6CE58BFE52F9FC08 /* MicCapture.swift */; };
 		A78A8709940552C9FC819A84 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E4A23A0FE606A0CF28ABE1 /* ContentView.swift */; };
+		D0A5059BE672C62155587343 /* FeatureExtractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A847504132C36BD41DC808 /* FeatureExtractorTests.swift */; };
 		D130EEEDA9834A38F1DF3252 /* FeatureFrameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731F301E49660B8B0E8D2B1E /* FeatureFrameTests.swift */; };
 		D6356343556A1F972221C99D /* SigilRendererTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E94A8869CFF9C5E41A5596 /* SigilRendererTests.swift */; };
 		E2C457480999921C1347728F /* GlyphContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10838318631A0CDD0629A21 /* GlyphContext.swift */; };
@@ -40,11 +43,14 @@
 		45E94A8869CFF9C5E41A5596 /* SigilRendererTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigilRendererTests.swift; sourceTree = "<group>"; };
 		4D5AFF87D8CE8016C1ABB0CA /* FeatureFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureFrame.swift; sourceTree = "<group>"; };
 		64ACDAE47783C581CFC33724 /* RendererPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RendererPreviewView.swift; sourceTree = "<group>"; };
+		6AFB2F275273E82124782312 /* FeatureExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureExtractor.swift; sourceTree = "<group>"; };
 		6FEC11A965B1D686B28BBA47 /* EngramTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngramTests.swift; sourceTree = "<group>"; };
 		731F301E49660B8B0E8D2B1E /* FeatureFrameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureFrameTests.swift; sourceTree = "<group>"; };
 		7747AB6507C03EE64F5C74D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9A0551A8DFF54710CD9C3423 /* Engram.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Engram.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3A847504132C36BD41DC808 /* FeatureExtractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureExtractorTests.swift; sourceTree = "<group>"; };
 		AD244D129DDE794E66DCF679 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		B091087A6CE58BFE52F9FC08 /* MicCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicCapture.swift; sourceTree = "<group>"; };
 		B892F91E14654D7810978161 /* EngramTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = EngramTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C61B2D20D94E1EFC39CC95B6 /* EngramApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngramApp.swift; sourceTree = "<group>"; };
 		C6BDAFD8C3D10D9B0C8031F3 /* GlyphState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlyphState.swift; sourceTree = "<group>"; };
@@ -68,6 +74,7 @@
 		0679DB002D04247FAF8EB436 /* AudioTests */ = {
 			isa = PBXGroup;
 			children = (
+				A3A847504132C36BD41DC808 /* FeatureExtractorTests.swift */,
 				731F301E49660B8B0E8D2B1E /* FeatureFrameTests.swift */,
 			);
 			path = AudioTests;
@@ -133,7 +140,9 @@
 		AF80F09415B414FB048DEFE8 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				6AFB2F275273E82124782312 /* FeatureExtractor.swift */,
 				4D5AFF87D8CE8016C1ABB0CA /* FeatureFrame.swift */,
+				B091087A6CE58BFE52F9FC08 /* MicCapture.swift */,
 			);
 			path = Audio;
 			sourceTree = "<group>";
@@ -247,6 +256,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				72A51A647D31FFC92BF034A6 /* EngramTests.swift in Sources */,
+				D0A5059BE672C62155587343 /* FeatureExtractorTests.swift in Sources */,
 				D130EEEDA9834A38F1DF3252 /* FeatureFrameTests.swift in Sources */,
 				3D88973E1C91622FA73B9409 /* GlyphStateTests.swift in Sources */,
 				D6356343556A1F972221C99D /* SigilRendererTests.swift in Sources */,
@@ -259,9 +269,11 @@
 			files = (
 				A78A8709940552C9FC819A84 /* ContentView.swift in Sources */,
 				2B9BBD8037E3A567010DFB65 /* EngramApp.swift in Sources */,
+				7EA58AC1AE3323F26E11D4DE /* FeatureExtractor.swift in Sources */,
 				5B363E475DED7B1B500B8868 /* FeatureFrame.swift in Sources */,
 				E2C457480999921C1347728F /* GlyphContext.swift in Sources */,
 				E7ADB0C31FC703AC941C3B94 /* GlyphState.swift in Sources */,
+				9185302FC090290B185A1DB2 /* MicCapture.swift in Sources */,
 				078EEEE48D42A3AEAFB42AB2 /* RendererPreviewView.swift in Sources */,
 				1C87972700C45DD8BA174614 /* SigilRenderer.swift in Sources */,
 			);
