@@ -1,0 +1,56 @@
+name: Engram
+options:
+  bundleIdPrefix: art.engram
+  deploymentTarget:
+    iOS: "16.0"
+  developmentLanguage: en
+  defaultConfig: Debug
+
+settings:
+  base:
+    MARKETING_VERSION: "0.1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    SWIFT_VERSION: "5.9"
+    IPHONEOS_DEPLOYMENT_TARGET: "16.0"
+    ENABLE_BITCODE: NO
+    CLANG_ENABLE_MODULES: YES
+
+targets:
+  Engram:
+    type: application
+    platform: iOS
+    sources:
+      - path: Engram
+    info:
+      path: Engram/Info.plist
+      properties:
+        CFBundleDisplayName: ENGRAM
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+        UIBackgroundModes:
+          - audio
+        NSMicrophoneUsageDescription: "Engram listens to live performance audio to generate sigil glyphs."
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: art.engram.app
+        TARGETED_DEVICE_FAMILY: "1"
+        CODE_SIGN_STYLE: Automatic
+        SUPPORTS_MACCATALYST: NO
+        SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD: NO
+    dependencies:
+      - sdk: AVFoundation.framework
+      - sdk: Accelerate.framework
+
+  EngramTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: EngramTests
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: art.engram.tests
+    dependencies:
+      - target: Engram
