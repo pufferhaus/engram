@@ -49,6 +49,8 @@ targets:
     platform: iOS
     sources:
       - path: EngramTests
+    info:
+      path: EngramTests/Info.plist
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: art.engram.tests
