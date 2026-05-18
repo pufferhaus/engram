@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		078EEEE48D42A3AEAFB42AB2 /* RendererPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64ACDAE47783C581CFC33724 /* RendererPreviewView.swift */; };
 		1C87972700C45DD8BA174614 /* SigilRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169F09EFD7B4103FE4B3C5E2 /* SigilRenderer.swift */; };
 		2B9BBD8037E3A567010DFB65 /* EngramApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61B2D20D94E1EFC39CC95B6 /* EngramApp.swift */; };
 		51119D5E2247097C4F6DFF35 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD244D129DDE794E66DCF679 /* AVFoundation.framework */; };
@@ -35,6 +36,7 @@
 		169F09EFD7B4103FE4B3C5E2 /* SigilRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigilRenderer.swift; sourceTree = "<group>"; };
 		45E94A8869CFF9C5E41A5596 /* SigilRendererTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigilRendererTests.swift; sourceTree = "<group>"; };
 		4D5AFF87D8CE8016C1ABB0CA /* FeatureFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureFrame.swift; sourceTree = "<group>"; };
+		64ACDAE47783C581CFC33724 /* RendererPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RendererPreviewView.swift; sourceTree = "<group>"; };
 		6FEC11A965B1D686B28BBA47 /* EngramTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngramTests.swift; sourceTree = "<group>"; };
 		731F301E49660B8B0E8D2B1E /* FeatureFrameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureFrameTests.swift; sourceTree = "<group>"; };
 		7747AB6507C03EE64F5C74D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				03E4A23A0FE606A0CF28ABE1 /* ContentView.swift */,
+				64ACDAE47783C581CFC33724 /* RendererPreviewView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 				2B9BBD8037E3A567010DFB65 /* EngramApp.swift in Sources */,
 				5B363E475DED7B1B500B8868 /* FeatureFrame.swift in Sources */,
 				E2C457480999921C1347728F /* GlyphContext.swift in Sources */,
+				078EEEE48D42A3AEAFB42AB2 /* RendererPreviewView.swift in Sources */,
 				1C87972700C45DD8BA174614 /* SigilRenderer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
