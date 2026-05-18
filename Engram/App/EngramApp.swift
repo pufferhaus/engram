@@ -28,12 +28,3 @@ struct EngramApp: App {
     }
 }
 
-// Temporary stub — replaced by real implementation in Task 15
-struct ArchiveBrowser: View {
-    var body: some View {
-        ZStack {
-            Color.black.ignoresSafeArea()
-            Text("ARCHIVE").foregroundStyle(.secondary)
-        }
-    }
-}

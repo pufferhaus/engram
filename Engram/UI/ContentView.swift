@@ -68,6 +68,18 @@ struct ContentView: View {
                 UIApplication.shared.isIdleTimerDisabled = running
                 if running { UIScreen.main.brightness = 1.0 }
             }
+            #if DEBUG
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink("DEV") {
+                        RendererPreviewView()
+                            .navigationTitle("Renderer Preview")
+                    }
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                }
+            }
+            #endif
         }
     }
 
