@@ -20,6 +20,10 @@ struct SigilRenderer {
         ctx.setFillColor(gray: 0, alpha: 1)
         ctx.fill(CGRect(x: 0, y: 0, width: size, height: size))
 
+        // Flip coordinate system: y=0 at top, y=32 at bottom (thermal printer row order)
+        ctx.translateBy(x: 0, y: CGFloat(size))
+        ctx.scaleBy(x: 1, y: -1)
+
         let baselineY = context.baselineY
         let strokeWidth: CGFloat = frame.rms > 0.5 ? 2.0 : 1.0
         ctx.setStrokeColor(gray: 1, alpha: 1)
@@ -155,7 +159,7 @@ struct SigilRenderer {
     }
 
     private func drawRisers(_ ctx: CGContext, frame: FeatureFrame, baselineY: CGFloat) {
-        let riserCount = max(1, Int(frame.spectralCentroid * 3.0))
+        let riserCount = min(max(1, Int(frame.spectralCentroid * 3.0)), 3)
         let maxHeight = CGFloat(frame.spectralRolloff * 12.0)
         let step: CGFloat = 32.0 / CGFloat(riserCount + 1)
 
