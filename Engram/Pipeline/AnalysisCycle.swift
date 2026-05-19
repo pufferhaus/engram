@@ -66,6 +66,7 @@ final class AnalysisCycle: ObservableObject {
     func start() throws {
         guard !isRunning else { return }
         try micCapture.start()
+        featureExtractor.sampleRate = Float(micCapture.sampleRate)
         startDate = Date()
         isRunning = true
         timer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true) { [weak self] _ in

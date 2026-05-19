@@ -2,23 +2,29 @@ import AVFoundation
 
 final class MicCapture {
     private let engine = AVAudioEngine()
-    private var ringBuffer: [Float]
-    private let capacity: Int
+    private var ringBuffer: [Float] = []
+    private var capacity: Int = 0
+    private let windowSeconds: Double
     private let lock = NSLock()
+    private(set) var sampleRate: Double = 44100
 
-    /// `windowSeconds` should be slightly more than 5.0 to ensure snapshot always has enough data.
-    init(sampleRate: Double = 44100, windowSeconds: Double = 5.5) {
-        self.capacity = Int(sampleRate * windowSeconds)
-        self.ringBuffer = [Float](repeating: 0, count: Int(sampleRate * windowSeconds))
+    init(windowSeconds: Double = 5.5) {
+        self.windowSeconds = windowSeconds
     }
 
     func start() throws {
         let session = AVAudioSession.sharedInstance()
-        try session.setCategory(.record, mode: .measurement, options: [.allowBluetooth])
+        try session.setCategory(.record, mode: .measurement, options: [AVAudioSession.CategoryOptions.allowBluetoothHFP])
         try session.setActive(true)
 
         let inputNode = engine.inputNode
-        let format = AVAudioFormat(standardFormatWithSampleRate: 44100, channels: 1)!
+        let format = inputNode.outputFormat(forBus: 0)
+        sampleRate = format.sampleRate
+        capacity = Int(sampleRate * windowSeconds)
+
+        lock.lock()
+        ringBuffer = [Float](repeating: 0, count: capacity)
+        lock.unlock()
 
         inputNode.installTap(onBus: 0, bufferSize: 1024, format: format) { [weak self] audioBuffer, _ in
             guard let self,
@@ -37,8 +43,9 @@ final class MicCapture {
         try? AVAudioSession.sharedInstance().setActive(false)
     }
 
-    /// Returns the last `sampleCount` samples. Zero-pads at the front if fewer samples are available.
-    func snapshot(sampleCount: Int = 44100 * 5) -> [Float] {
+    /// Returns the last 5s of samples at the detected hardware sample rate.
+    func snapshot() -> [Float] {
+        let sampleCount = Int(sampleRate * 5.0)
         lock.lock()
         defer { lock.unlock() }
         let available = ringBuffer.count
@@ -47,8 +54,6 @@ final class MicCapture {
         }
         return [Float](repeating: 0, count: sampleCount - available) + ringBuffer
     }
-
-    // MARK: - Private
 
     private func write(_ samples: [Float]) {
         lock.lock()

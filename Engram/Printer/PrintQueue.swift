@@ -6,8 +6,7 @@ final class PrintQueue: PrintQueueProtocol {
     private let printer: any PrinterProtocol
     private let logger = Logger(subsystem: "art.engram", category: "printQueue")
     private var workerTask: Task<Void, Never>?
-    private var pendingRows: [CGImage] = []
-    private let lock = NSLock()
+    private let store = RowStore()
 
     init(printer: any PrinterProtocol) {
         self.printer = printer
@@ -15,31 +14,31 @@ final class PrintQueue: PrintQueueProtocol {
     }
 
     func enqueue(_ image: CGImage) {
-        lock.lock()
-        pendingRows.append(image)
-        lock.unlock()
+        Task { await store.enqueue(image) }
     }
 
     private func startWorker() {
         workerTask = Task.detached(priority: .background) { [weak self] in
             while !Task.isCancelled {
                 guard let self else { return }
-                self.lock.lock()
-                let row = self.pendingRows.isEmpty ? nil : self.pendingRows.removeFirst()
-                self.lock.unlock()
-
-                if let row {
+                if let row = await self.store.dequeue() {
                     do {
                         try await self.printer.printRow(row)
                     } catch {
                         self.logger.error("PrintQueue: print failed — \(error.localizedDescription)")
                     }
                 } else {
-                    try? await Task.sleep(nanoseconds: 100_000_000) // 100ms poll
+                    try? await Task.sleep(nanoseconds: 100_000_000)
                 }
             }
         }
     }
 
     deinit { workerTask?.cancel() }
+}
+
+private actor RowStore {
+    var rows: [CGImage] = []
+    func enqueue(_ image: CGImage) { rows.append(image) }
+    func dequeue() -> CGImage? { rows.isEmpty ? nil : rows.removeFirst() }
 }

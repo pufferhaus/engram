@@ -7,38 +7,25 @@ struct SigilRenderer {
 
     /// Render one 32×32 glyph. Advances `context` after drawing.
     func render(frame: FeatureFrame, context: inout GlyphContext) -> CGImage {
-        let size = 32
-        let colorSpace = CGColorSpaceCreateDeviceGray()
-        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.none.rawValue)
-        let ctx = CGContext(
-            data: nil, width: size, height: size,
-            bitsPerComponent: 8, bytesPerRow: size,
-            space: colorSpace, bitmapInfo: bitmapInfo.rawValue
-        )!
+        var pixels = [UInt8](repeating: 0, count: 32 * 32)
+        let field = buildField(frame: frame, glyphIndex: context.glyphIndex)
+        let seeds = buildSeeds(frame: frame, glyphIndex: context.glyphIndex)
+        let fiberLen = Int((4.0 + frame.hpssRatio * 20.0).rounded())
 
-        // Black background
-        ctx.setFillColor(gray: 0, alpha: 1)
-        ctx.fill(CGRect(x: 0, y: 0, width: size, height: size))
-
-        // Flip coordinate system: y=0 at top, y=32 at bottom (thermal printer row order)
-        ctx.translateBy(x: 0, y: CGFloat(size))
-        ctx.scaleBy(x: 1, y: -1)
-
-        let baselineY = context.baselineY
-        let strokeWidth: CGFloat = frame.rms > 0.5 ? 2.0 : 1.0
-        ctx.setStrokeColor(gray: 1, alpha: 1)
-        ctx.setFillColor(gray: 1, alpha: 1)
-        ctx.setLineWidth(strokeWidth)
-
-        drawBaseline(ctx, y: baselineY, width: CGFloat(size))
-        drawAnchorSeal(ctx, pitchClass: frame.dominantPitchClass, x: 16, y: baselineY)
-        drawOnsets(ctx, frame: frame, baselineY: baselineY)
-        drawRisers(ctx, frame: frame, baselineY: baselineY)
-        if context.glyphIndex % 12 == 0 {
-            drawMinuteMark(ctx, baselineY: baselineY)
+        for seed in seeds {
+            var fx = seed.x, fy = seed.y
+            for _ in 0..<fiberLen {
+                let ix = max(0, min(31, Int(fx.rounded())))
+                let iy = max(0, min(31, Int(fy.rounded())))
+                pixels[iy * 32 + ix] = 255
+                let angle = field[iy * 32 + ix]
+                fx += cos(angle) * 0.65
+                fy += sin(angle) * 0.65
+                if fx < 0 || fx >= 32 || fy < 0 || fy >= 32 { break }
+            }
         }
 
-        let image = ctx.makeImage()!
+        let image = makeImage(pixels: pixels)
         context.advance(with: frame)
         return image
     }
@@ -68,115 +55,94 @@ struct SigilRenderer {
         return packed
     }
 
-    // MARK: - Drawing Primitives
+    // MARK: - Field
 
-    private func drawBaseline(_ ctx: CGContext, y: CGFloat, width: CGFloat) {
-        ctx.setLineWidth(1)
-        ctx.move(to: CGPoint(x: 0, y: y))
-        ctx.addLine(to: CGPoint(x: width, y: y))
-        ctx.strokePath()
-    }
+    private func buildField(frame: FeatureFrame, glyphIndex: Int) -> [Float] {
+        var field = [Float](repeating: 0, count: 32 * 32)
+        let freq: Float = 2.0 + frame.spectralBandwidth * 3.5
+        let indexOffset = Float(glyphIndex) * 0.13
 
-    private func drawAnchorSeal(_ ctx: CGContext, pitchClass: Int, x: CGFloat, y: CGFloat) {
-        ctx.setLineWidth(1)
-        let r: CGFloat = 3
-        switch pitchClass {
-        case 0:  // C — circle
-            ctx.strokeEllipse(in: CGRect(x: x - r, y: y - r, width: r * 2, height: r * 2))
-        case 1:  // C# — circle + vertical
-            ctx.strokeEllipse(in: CGRect(x: x - r, y: y - r, width: r * 2, height: r * 2))
-            ctx.move(to: CGPoint(x: x, y: y - r)); ctx.addLine(to: CGPoint(x: x, y: y + r))
-            ctx.strokePath()
-        case 2:  // D — triangle up
-            ctx.move(to: CGPoint(x: x, y: y - r))
-            ctx.addLine(to: CGPoint(x: x + r, y: y + r))
-            ctx.addLine(to: CGPoint(x: x - r, y: y + r))
-            ctx.closePath(); ctx.strokePath()
-        case 3:  // Eb — triangle down
-            ctx.move(to: CGPoint(x: x, y: y + r))
-            ctx.addLine(to: CGPoint(x: x + r, y: y - r))
-            ctx.addLine(to: CGPoint(x: x - r, y: y - r))
-            ctx.closePath(); ctx.strokePath()
-        case 4:  // E — diamond
-            ctx.move(to: CGPoint(x: x, y: y - r))
-            ctx.addLine(to: CGPoint(x: x + r, y: y))
-            ctx.addLine(to: CGPoint(x: x, y: y + r))
-            ctx.addLine(to: CGPoint(x: x - r, y: y))
-            ctx.closePath(); ctx.strokePath()
-        case 5:  // F — square
-            ctx.stroke(CGRect(x: x - r, y: y - r, width: r * 2, height: r * 2))
-        case 6:  // F# — X
-            ctx.move(to: CGPoint(x: x - r, y: y - r)); ctx.addLine(to: CGPoint(x: x + r, y: y + r))
-            ctx.move(to: CGPoint(x: x + r, y: y - r)); ctx.addLine(to: CGPoint(x: x - r, y: y + r))
-            ctx.strokePath()
-        case 7:  // G — plus
-            ctx.move(to: CGPoint(x: x, y: y - r)); ctx.addLine(to: CGPoint(x: x, y: y + r))
-            ctx.move(to: CGPoint(x: x - r, y: y)); ctx.addLine(to: CGPoint(x: x + r, y: y))
-            ctx.strokePath()
-        case 8:  // Ab — dot in circle
-            ctx.strokeEllipse(in: CGRect(x: x - r, y: y - r, width: r * 2, height: r * 2))
-            ctx.fillEllipse(in: CGRect(x: x - 1, y: y - 1, width: 2, height: 2))
-        case 9:  // A — two horizontal bars
-            ctx.move(to: CGPoint(x: x - r, y: y - 1)); ctx.addLine(to: CGPoint(x: x + r, y: y - 1))
-            ctx.move(to: CGPoint(x: x - r, y: y + 1)); ctx.addLine(to: CGPoint(x: x + r, y: y + 1))
-            ctx.strokePath()
-        case 10: // Bb — two dots
-            ctx.fillEllipse(in: CGRect(x: x - r - 1, y: y - 1, width: 2, height: 2))
-            ctx.fillEllipse(in: CGRect(x: x + r - 1, y: y - 1, width: 2, height: 2))
-        default: // B — vertical bar with serifs
-            ctx.move(to: CGPoint(x: x, y: y - r)); ctx.addLine(to: CGPoint(x: x, y: y + r))
-            ctx.move(to: CGPoint(x: x - 1.5, y: y - r)); ctx.addLine(to: CGPoint(x: x + 1.5, y: y - r))
-            ctx.move(to: CGPoint(x: x - 1.5, y: y + r)); ctx.addLine(to: CGPoint(x: x + 1.5, y: y + r))
-            ctx.strokePath()
-        }
-    }
+        for y in 0..<32 {
+            for x in 0..<32 {
+                let nx = Float(x) / 32.0
+                let ny = Float(y) / 32.0
 
-    private func drawOnsets(_ ctx: CGContext, frame: FeatureFrame, baselineY: CGFloat) {
-        let onsets = Array(frame.onsetTimes.prefix(6))
-        for t in onsets {
-            let x = CGFloat(t) * 32.0
-            let isPercussive = frame.hpssRatio < 0.5
+                // chroma → field shape: each pitch class contributes a wave in its angular direction
+                var wx: Float = 0, wy: Float = 0
+                for i in 0..<12 {
+                    let strength = frame.chroma[i]
+                    guard strength > 0.02 else { continue }
+                    let theta = Float(i) / 12.0 * .pi * 2.0
+                    let phase = (nx * cos(theta) + ny * sin(theta)) * freq * .pi
+                    wx += strength * cos(theta + phase)
+                    wy += strength * sin(theta + phase)
+                }
 
-            // Onset tick (vertical stroke crossing baseline)
-            ctx.setLineWidth(1)
-            ctx.move(to: CGPoint(x: x, y: baselineY - 5))
-            ctx.addLine(to: CGPoint(x: x, y: baselineY + 5))
-            ctx.strokePath()
+                var angle = atan2(wy, wx)
 
-            if isPercussive {
-                // ╳ mark
-                ctx.setLineWidth(1)
-                ctx.move(to: CGPoint(x: x - 2.5, y: baselineY - 2.5))
-                ctx.addLine(to: CGPoint(x: x + 2.5, y: baselineY + 2.5))
-                ctx.move(to: CGPoint(x: x + 2.5, y: baselineY - 2.5))
-                ctx.addLine(to: CGPoint(x: x - 2.5, y: baselineY + 2.5))
-                ctx.strokePath()
-            } else {
-                // Dot above baseline
-                ctx.fillEllipse(in: CGRect(x: x - 1.5, y: baselineY - 4, width: 3, height: 3))
+                // spectralFlatness → turbulence (0 = smooth curves, 1 = chaotic tangles)
+                let n1 = hash(Float(x) + 0.1 + indexOffset, Float(y) + 0.3) * 2 - 1
+                angle += n1 * frame.spectralFlatness * .pi * 0.9
+
+                // deltaRms + deltaSpectralCentroid → burst of extra turbulence at transitions
+                let delta = abs(frame.deltaRms) + abs(frame.deltaSpectralCentroid)
+                if delta > 0.05 {
+                    let n2 = hash(Float(x) + 7.3, Float(y) + 2.1 + indexOffset) * 2 - 1
+                    angle += n2 * delta * .pi * 0.6
+                }
+
+                field[y * 32 + x] = angle
             }
         }
+        return field
     }
 
-    private func drawRisers(_ ctx: CGContext, frame: FeatureFrame, baselineY: CGFloat) {
-        let riserCount = min(max(1, Int(frame.spectralCentroid * 3.0)), 3)
-        let maxHeight = CGFloat(frame.spectralRolloff * 12.0)
-        let step: CGFloat = 32.0 / CGFloat(riserCount + 1)
+    // MARK: - Seeds
 
-        ctx.setLineWidth(1)
-        for i in 0..<riserCount {
-            let x = step * CGFloat(i + 1)
-            let height = maxHeight * CGFloat.random(in: 0.6...1.0)
-            ctx.move(to: CGPoint(x: x, y: baselineY))
-            ctx.addLine(to: CGPoint(x: x, y: max(baselineY - height, 2)))
-            ctx.strokePath()
+    private func buildSeeds(frame: FeatureFrame, glyphIndex: Int) -> [(x: Float, y: Float)] {
+        // rms → count · spectralCentroid → vertical band · spectralBandwidth → spread
+        // onsetTimes → additional seeds at event positions
+        let centroidY: Float = (1.0 - frame.spectralCentroid) * 26.0 + 3.0
+        let spread: Float = 3.0 + frame.spectralBandwidth * 9.0
+        let count = Int((6.0 + frame.rms * 34.0).rounded())
+        let gi = Float(glyphIndex)
+
+        var seeds: [(x: Float, y: Float)] = []
+        seeds.reserveCapacity(count + frame.onsetTimes.count)
+
+        for i in 0..<count {
+            let fi = Float(i)
+            let x = hash(fi * 7.31 + gi * 0.37, 42.1) * 31.0
+            let yOff = (hash(fi * 13.7, 88.3 + gi * 0.19) * 2 - 1) * spread
+            seeds.append((x: x, y: max(1, min(30, centroidY + yOff))))
         }
+
+        for t in frame.onsetTimes {
+            let yOff = (hash(t * 99.7, 3.14) * 2 - 1) * spread * 0.6
+            seeds.append((x: t * 31.0, y: max(1, min(30, centroidY + yOff))))
+        }
+
+        return seeds
     }
 
-    private func drawMinuteMark(_ ctx: CGContext, baselineY: CGFloat) {
-        ctx.setLineWidth(2)
-        ctx.move(to: CGPoint(x: 0, y: baselineY + 3))
-        ctx.addLine(to: CGPoint(x: 3, y: baselineY + 3))
-        ctx.strokePath()
+    // MARK: - Utilities
+
+    private func hash(_ x: Float, _ y: Float) -> Float {
+        let v = sin(x * 127.1 + y * 311.7) * 43758.5453
+        return v - floor(v)
+    }
+
+    private func makeImage(pixels: [UInt8]) -> CGImage {
+        let data = Data(pixels) as CFData
+        let provider = CGDataProvider(data: data)!
+        return CGImage(
+            width: 32, height: 32,
+            bitsPerComponent: 8, bitsPerPixel: 8, bytesPerRow: 32,
+            space: CGColorSpaceCreateDeviceGray(),
+            bitmapInfo: CGBitmapInfo(rawValue: CGImageAlphaInfo.none.rawValue),
+            provider: provider,
+            decode: nil, shouldInterpolate: false,
+            intent: .defaultIntent
+        )!
     }
 }

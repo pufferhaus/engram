@@ -2,7 +2,7 @@ import Accelerate
 import Foundation
 
 final class FeatureExtractor: @unchecked Sendable {
-    let sampleRate: Float = 44100
+    var sampleRate: Float = 44100
     let fftSize: Int = 2048
 
     private let fftSetup: FFTSetup
@@ -93,11 +93,14 @@ final class FeatureExtractor: @unchecked Sendable {
 
         var real = windowed
         var imaginary = [Float](repeating: 0, count: n)
-        var split = DSPSplitComplex(realp: &real, imagp: &imaginary)
-        vDSP_fft_zip(fftSetup, &split, 1, log2n, FFTDirection(FFT_FORWARD))
-
         var magnitudes = [Float](repeating: 0, count: n / 2)
-        vDSP_zvmags(&split, 1, &magnitudes, 1, vDSP_Length(n / 2))
+        real.withUnsafeMutableBufferPointer { realBuf in
+            imaginary.withUnsafeMutableBufferPointer { imagBuf in
+                var split = DSPSplitComplex(realp: realBuf.baseAddress!, imagp: imagBuf.baseAddress!)
+                vDSP_fft_zip(fftSetup, &split, 1, log2n, FFTDirection(FFT_FORWARD))
+                vDSP_zvmags(&split, 1, &magnitudes, 1, vDSP_Length(n / 2))
+            }
+        }
 
         // Sqrt for linear magnitude
         var result = [Float](repeating: 0, count: n / 2)
